@@ -4,6 +4,8 @@ pipeline {
 	stages {
 		stage('Add Jenkins to Docker user group') {
 			steps {
+				sh 'cat /etc/passwd'
+				sh 'cat /etc/group'
 				sh 'usermod -a -G docker jenkins'
 			}
 		}
