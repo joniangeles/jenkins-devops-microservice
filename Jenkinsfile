@@ -16,7 +16,8 @@ pipeline {
 				echo "Integration Test"
 			}			
 		}
-	} post {
+	} 
+	post {
 		always {
 			echo 'This always runs'
 		}
@@ -25,6 +26,9 @@ pipeline {
 		}
 		failure {
 			echo 'Fail'
+		}
+		changed {
+			echo 'Build status changed.'
 		}
 	}
 }
