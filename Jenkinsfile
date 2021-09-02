@@ -1,16 +1,16 @@
 pipeline {
-	agent any
-	
+	//agent any
+	agent { docker { image 'maven:3.6.3' } }
 	stages {
-		stage('Add Jenkins to Docker user group') {
-			steps {
-				sh 'cat /etc/passwd'
-				sh 'cat /etc/group'
-				sh 'usermod -a -G docker jenkins'
-			}
-		}
+		// stage('Add Jenkins to Docker user group') {
+		// 	steps {
+		// 		sh 'cat /etc/passwd'
+		// 		sh 'cat /etc/group'
+		// 		sh 'usermod -a -G docker jenkins'
+		// 	}
+		// }
 		stage('Build') {
-			agent { docker { image 'maven:3.6.3' } }
+			
 			steps {
 				sh "mvn --version"
 				echo "Build"
