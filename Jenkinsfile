@@ -13,7 +13,7 @@ pipeline {
 				echo "Build"
 				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
 				echo "BUILD_URL - $env.BUILD_URL"
-				echo "Docker Image ID - $docker.Image.id"
+				
 			}
 		}
 		stage('Test') {
