@@ -3,22 +3,17 @@ pipeline {
 	agent { 
 		docker { 
 			image 'maven:3.6.3' 
-			args '-u root:root'
 		} 
 	}
 	stages {
-		// stage('Add Jenkins to Docker user group') {
-		// 	steps {
-		// 		sh 'cat /etc/passwd'
-		// 		sh 'cat /etc/group'
-		// 		sh 'usermod -a -G docker jenkins'
-		// 	}
-		// }
 		stage('Build') {
 			
 			steps {
 				sh "mvn --version"
 				echo "Build"
+				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
+				echo "BUILD_URL - $env.BUILD_URL"
+				echo "Docker Image ID - $docker.Image.id"
 			}
 		}
 		stage('Test') {
